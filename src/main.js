@@ -8,7 +8,10 @@ let appIcon
 
 function createWindow() {
   autoUpdater.fullChangelog = false
-  autoUpdater.checkForUpdatesAndNotify()
+
+  setInterval(() => {
+    autoUpdater.checkForUpdatesAndNotify()
+  }, 300000)
 
   app.setName('Custom Discord RPC - ' + app.getVersion())
   mainWindow = new BrowserWindow({
