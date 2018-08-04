@@ -33,7 +33,7 @@ function createWindow() {
   ]);
 
   appIcon = new Tray(path.join(__dirname, 'images', 'macho.png'))
-  appIcon.setToolTip('Custom Discord RPC' + app.getVersion())
+  appIcon.setToolTip('Custom Discord RPC - ' + app.getVersion())
   appIcon.setContextMenu(contextMenu)
   appIcon.addListener('double-click', () => {
     mainWindow.show()
