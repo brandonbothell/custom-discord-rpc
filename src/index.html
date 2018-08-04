@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Rich Presence</title>
+  <link rel=stylesheet href=style.css />
+</head>
+
+<body>
+  <header>Custom Rich Presence</header>
+
+  <a id="helpButton" class="button1">Help</a>
+
+  <div id="helpSection" style="display: none;">
+    <h3>Anything marked with an asterisk is required.</h3>
+    <p>Details*: The top line of your presence.</p>
+    <p>State*: The second line of your presence.</p>
+    <p>Start timestamp*: This determines how much time has
+      <i>elapsed</i>, according to Discord. Use <a href="https://epochconverter.com" target="_blank">this</a></p>
+    <p>Large image text*: The text to be displayed when you hover over the large image.</p>
+    <p>Large image name: An image name from the list of names below.</p>
+    <p>Small image text*: The text to be displayed when you hover over the small image.</p>
+    <p>Small image name: An image name from the list of names below.</p>
+
+    <h3>Image names:</h3>
+    <ul>
+      <li>macho</li>
+      <li>eating</li>
+      <li>sleeping</li>
+      <li>programming</li>
+      <li>snek</li>
+      <li>youtube</li>
+    </ul>
+  </div>
+
+  <div id="formDiv">
+    <form class="topBefore" action="" method="get" id="presenceForm">
+      <input type="text" placeholder="Details*" name="details" />
+
+      <input type="text" placeholder="State*" name="state" />
+
+      <input type="text" placeholder="Start timestamp*" name="startTimestamp" />
+
+      <input type="text" placeholder="Large image hint*" name="largeImageText" />
+
+      <input type="text" placeholder="Large image name" name="largeImageKey" />
+
+      <input type="text" placeholder="Small image hint*" name="smallImageText" />
+
+      <input type="text" placeholder="Small image name" name="smallImageKey" />
+
+      <input type="button" value="Set Presence" id="submit" />
+    </form>
+  </div>
+
+  <script src=renderer.js></script>
+</body>
+
+</html>

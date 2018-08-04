@@ -1,0 +1,68 @@
+{
+  "name": "customrpc",
+  "version": "0.0.2",
+  "description": "Allows you to set your own custom Rich Presence on Discord.",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "electron .",
+    "dist": "electron-builder",
+    "pack": "electron-builder --dir",
+    "start": "electron ."
+  },
+  "build": {
+    "appId": "com.jasonhaxstuff.custom.discord.rpc",
+    "productName": "Custom Discord RPC",
+    "copyright": "Copyright © 2018 JasonHaxStuff",
+    "icon": "macho",
+    "files": [
+      "**/*",
+      "build/macho.*"
+    ],
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "author": "jasonhaxstuff",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "discord-rpc": "^3.0.0"
+  },
+  "devDependencies": {
+    "electron": "^2.0.6",
+    "electron-builder": "^20.26.1",
+    "register-scheme": "0.0.2"
+  },
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {
+        "packageManager": "npm"
+      },
+      "electronWinstallerConfig": {
+        "name": "Custom_Discord_RPC",
+        "setupIcon": "./build/macho.ico",
+        "setupExe": "Custom_Discord_RPC.exe",
+        "iconUrl": "http://www.macho.ga/images/macho.ico"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "",
+        "name": ""
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "Custom Discord RPC"
+      }
+    }
+  }
+}
