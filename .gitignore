@@ -2,3 +2,4 @@ dist
 .vscode
 build
 node_modules
+dev-app-update.yml

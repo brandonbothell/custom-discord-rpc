@@ -1,4 +1,5 @@
 const { app, BrowserWindow, Menu, Tray } = require('electron')
+const { autoUpdater } = require('electron-updater')
 const path = require('path')
 const url = require('url')
 
@@ -37,6 +38,8 @@ function createWindow() {
     protocol: 'file:',
     slashes: true,
   }))
+
+  autoUpdater.checkForUpdatesAndNotify()
 
   mainWindow.on('closed', () => {
     mainWindow = null
