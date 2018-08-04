@@ -7,7 +7,8 @@ let mainWindow
 let appIcon
 
 function createWindow() {
-  app.setName('Custom RPC')
+  autoUpdater.checkForUpdatesAndNotify()
+  app.setName('Custom Discord RPC - ' + app.getVersion())
   mainWindow = new BrowserWindow({
     width: 640,
     height: 480,
@@ -27,19 +28,19 @@ function createWindow() {
   ]);
 
   appIcon = new Tray(path.join(__dirname, 'images', 'macho.png'))
-  appIcon.setToolTip('Custom Discord RPC')
+  appIcon.setToolTip('Custom Discord RPC' + app.getVersion())
   appIcon.setContextMenu(contextMenu)
   appIcon.addListener('double-click', () => {
     mainWindow.show()
   })
+
+  mainWindow.setTitle('Custom Discord RPC - ' + app.getVersion())
 
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true,
   }))
-
-  autoUpdater.checkForUpdatesAndNotify()
 
   mainWindow.on('closed', () => {
     mainWindow = null
@@ -57,6 +58,10 @@ function createWindow() {
     }
 
     return false;
+  })
+
+  mainWindow.on('page-title-updated', (event) => {
+    event.preventDefault()
   })
 }
 
