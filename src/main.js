@@ -6,6 +6,18 @@ const url = require('url')
 let mainWindow
 let appIcon
 
+const isSecondInstance = app.makeSingleInstance((commandLine, workingDirectory) => {
+  // Someone tried to run a second instance, we should focus our window.
+  if (mainWindow) {
+    if (mainWindow.isMinimized()) mainWindow.restore()
+    mainWindow.focus()
+  }
+})
+
+if (isSecondInstance) {
+  app.quit()
+}
+
 function createWindow() {
   autoUpdater.fullChangelog = false
 
