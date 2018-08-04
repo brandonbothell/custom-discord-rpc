@@ -7,7 +7,9 @@ let mainWindow
 let appIcon
 
 function createWindow() {
+  autoUpdater.fullChangelog = false
   autoUpdater.checkForUpdatesAndNotify()
+
   app.setName('Custom Discord RPC - ' + app.getVersion())
   mainWindow = new BrowserWindow({
     width: 640,
@@ -75,4 +77,15 @@ app.on('activate', () => {
   if (mainWindow === null) {
     createWindow()
   }
+})
+
+autoUpdater.on('update-available', (info) => {
+  alert(`Starting to download version ${info.version}!\nChangelog: ${info.releaseNotes}`)
+})
+
+autoUpdater.on('update-downloaded', (info) => {
+  alert(`Restarting to install version ${info.version}`)
+
+  app.relaunch()
+  app.exit()
 })

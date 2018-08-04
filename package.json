@@ -1,6 +1,6 @@
 {
   "name": "customrpc",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Allows you to set your own custom Rich Presence on Discord.",
   "main": "src/main.js",
   "scripts": {
