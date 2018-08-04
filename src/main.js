@@ -80,6 +80,16 @@ function createWindow() {
   mainWindow.on('page-title-updated', (event) => {
     event.preventDefault()
   })
+
+  autoUpdater.on('update-available', (info) => {
+    alert(`Starting to download version ${info.version}!\nChangelog: ${info.releaseNotes}`)
+  })
+  
+  autoUpdater.on('update-downloaded', (info) => {
+    alert(`Restarting to install version ${info.version}`)
+  
+    autoUpdater.quitAndInstall(true, true)
+  })
 }
 
 app.on('ready', createWindow)
@@ -92,15 +102,4 @@ app.on('activate', () => {
   if (mainWindow === null) {
     createWindow()
   }
-})
-
-autoUpdater.on('update-available', (info) => {
-  alert(`Starting to download version ${info.version}!\nChangelog: ${info.releaseNotes}`)
-})
-
-autoUpdater.on('update-downloaded', (info) => {
-  alert(`Restarting to install version ${info.version}`)
-
-  app.relaunch()
-  app.exit()
 })
