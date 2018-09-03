@@ -28,7 +28,7 @@ function createWindow() {
   app.setName('Custom Discord RPC - ' + app.getVersion())
   mainWindow = new BrowserWindow({
     width: 640,
-    height: 480,
+    height: 800,
     resizable: true,
     titleBarStyle: 'hidden',
     alwaysOnTop: true
